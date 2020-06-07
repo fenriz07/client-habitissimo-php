@@ -1,16 +1,27 @@
-<?php namespace HabitissimoCF7\Repositories\Client;
+<?php namespace Fenriz\HabitissimoClient\Client;
 
-use HabitissimoCF7\Models\OptionModel;
 
 class Category extends GuzzleHttpRequest
 {
     private $endpoint = ['category/list'];
 
+
+    /**
+     * Obtiene las categorias
+     * 
+     * @return array listado de categorias
+     */
     public function listCategories()
     {
         return $this->get($this->endpoint);
     }
 
+    /**
+     * Obtiene las subcategorias
+     * 
+     * @param id string id de la categoria padre
+     * 
+     */
     public function listSubCategories($id)
     {
         $id = (string) $id;
@@ -19,10 +30,14 @@ class Category extends GuzzleHttpRequest
         return $this->get($this->endpoint);
     }
 
-    public function listChildrenSubCategories()
+    /**
+     * Obtiene los hijos de la subcategoria
+     * 
+     * @param id string id de la subcategoria padre
+     * 
+     */
+    public function listChildrenSubCategories($id)
     {
-        $id = OptionModel::getSubCategory();
-
         return $this->listSubCategories($id);
     }
         

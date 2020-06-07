@@ -9,13 +9,6 @@ class GuzzleHttpRequest
         'Accept'        => 'application/json'
     ];
 
-    /*private   $header = [
-        'headers' => 
-                    [
-                        'Authorization' => 'Bearer Ox0yITUBgcgM82e4JauGdp5b9XBpgkwzGeOUVDH0YNg=$2',
-                        'Accept'        => 'application/json',
-                    ],
-    ];*/
 
     public function __construct()
     {

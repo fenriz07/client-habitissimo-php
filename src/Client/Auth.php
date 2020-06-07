@@ -8,31 +8,51 @@ class Auth extends GuzzleHttpRequest
     /**
      * Autentifica el usuario
      * 
-     * @param string $data arreglo constituido con la siguente información
+     * @param array $data  constituido con la siguente información
      *  client_id
      *  client_secret
      *  username
      *  password
+     * 
+     * @return array constituido por: 
+     *  token_type
+     *  access_token
+     *  refresh_token
+     *  expires_in 
+     *  scope
      */
     public function login( array $data )
     {
         $data['grant_type'] = 'password';
-        
         return $this->post( $this->endpoint, $data);
     }
 
-    public function refresh( $auth )
+    /**
+     * Refrescar token
+     * 
+     * @param array $auth  constituido con la siguente información
+     *  client_id
+     *  client_secret
+     *  co
+     * 
+     * @return array constituido por: 
+     *  token_type
+     *  access_token
+     *  refresh_token
+     *  expires_in 
+     *  scope
+     */
+
+    public function refresh( array $auth )
     {
 
         $data = [];
 
-        $data['refresh_token'] = $auth->refresh_token;
+        $data['refresh_token'] = $auth['refresh_token'];
+        $data['client_id']     = $auth['client_id'];
+        $data['client_secret'] = $auth['client_secret'];
         $data['grant_type']    = 'refresh_token';
-        
-        $option = OptionModel::getOptions();
 
-        $data['client_id']     = $option['client_id'];
-        $data['client_secret'] = $option['client_secret'];
 
         return $this->post( $this->endpoint, $data);
 
