@@ -1,0 +1,19 @@
+{
+    "name": "fen/client-habitissimo-api-php",
+    "type": "package",
+    "authors": [
+        {
+            "name": "Servio Zambrano",
+            "email": "servio.za@gmail.com"
+        }
+    ],
+    "require": {
+        "php" : "^7.0",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "autoload":{
+        "psr-4":{
+           "Fenriz\\HabitissimoClient\\":"src"
+        }
+     }
+}
